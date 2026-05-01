@@ -1038,100 +1038,133 @@
       .why-grid      { grid-template-columns: repeat(2, 1fr); }
     }
 
-    /* ── Large mobile / small tablet ── */
+    /* ── Phablet / small tablet ── */
     @media (max-width: 880px) {
       nav { padding: 0 18px; }
-      .nav-links  { display: none; }
+      .nav-links    { display: none; }
       .nav-text-sub { display: none; }
-      .nav-logo { width: 38px; height: 38px; }
+      .nav-logo     { width: 38px; height: 38px; }
 
-      .hero { padding: 86px 20px 0; }
+      .hero { padding: 84px 20px 0; }
       .hero-grid {
         grid-template-columns: 1fr;
-        gap: 28px;
-        padding-bottom: 48px;
+        gap: 24px;
+        padding-bottom: 44px;
         text-align: center;
       }
-      .hero-visual  { order: -1; }
-      .hero-glow    { width: 260px; height: 260px; }
-      .hero-logo-img { width: 190px; height: 190px; }
-      .hero h1      { text-align: center; }
-      .hero-badge   { justify-content: center; }
-      .hero-desc    { text-align: center; margin-left: auto; margin-right: auto; }
-      .hero-ctas    { justify-content: center; }
-      .trust-pills  { justify-content: center; }
+      .hero-visual   { order: -1; }
+      .hero-glow     { width: 240px; height: 240px; }
+      .hero-logo-img { width: 170px; height: 170px; }
+      .hero h1       { text-align: center; }
+      .hero-badge    { justify-content: center; }
+      .hero-desc     { text-align: center; margin: 0 auto 28px; }
+      .hero-ctas     { justify-content: center; }
+      .trust-pills   { justify-content: center; }
 
-      .section  { padding: 60px 20px; }
-      #why      { padding: 60px 20px; }
-      #about    { padding: 60px 20px; }
-
-      .quote-wrap { grid-template-columns: 1fr; gap: 36px; }
+      .section, #why, #about { padding: 60px 20px; }
+      .quote-wrap    { grid-template-columns: 1fr; gap: 36px; }
     }
 
     /* ── Mobile ── */
     @media (max-width: 640px) {
-      .section, #why, #about { padding: 52px 16px; }
-      .state-banner          { padding: 44px 16px; }
+      /* ─ global spacing */
+      .section, #why, #about { padding: 48px 16px; }
+      .state-banner           { padding: 40px 16px; }
+      .sec-title              { font-size: clamp(22px, 6vw, 32px); }
+      .sec-eyebrow            { font-size: 11px; }
 
-      /* Hero */
-      .hero { padding: 80px 16px 0; }
-      .hero-grid { gap: 22px; padding-bottom: 40px; }
-      .hero-logo-img { width: 160px; height: 160px; }
-      .hero-glow     { width: 220px; height: 220px; }
-      .hero h1       { font-size: clamp(30px, 8vw, 42px); letter-spacing: -.5px; }
-      .hero-badge    { font-size: 12px; padding: 6px 14px; }
-      .hero-desc     { font-size: 14.5px; margin-bottom: 28px; }
+      /* ─ nav */
+      .nav-cta { padding: 9px 16px; font-size: 13px; }
+
+      /* ─ hero: hide paths (perf + clutter) */
+      .hero-paths { display: none; }
+
+      .hero { padding: 78px 16px 0; }
+      .hero-grid { gap: 20px; padding-bottom: 36px; }
+      .hero-logo-img { width: 140px; height: 140px; border-radius: 18px; }
+      .hero-glow     { display: none; }
+      .hero h1       { font-size: clamp(28px, 7.5vw, 38px); letter-spacing: -.3px; }
+      .hero-badge    { font-size: 11.5px; padding: 6px 13px; }
+      .hero-desc     { font-size: 14px; line-height: 1.7; margin-bottom: 24px; }
       .hero-ctas     { flex-direction: column; align-items: stretch; gap: 10px; }
       .btn-primary,
-      .btn-outline   { width: 100%; text-align: center; padding: 16px; font-size: 15px; }
-      .trust-pills   { gap: 7px; }
-      .trust-pill    { font-size: 11.5px; padding: 7px 13px; }
+      .btn-outline   { width: 100%; text-align: center; padding: 15px; font-size: 15px; }
+      /* trust pills: tighter 2-up wrap */
+      .trust-pills   { gap: 6px; }
+      .trust-pill    { font-size: 11px; padding: 6px 11px; gap: 5px; }
 
-      /* Services */
-      .services-grid { grid-template-columns: 1fr; gap: 14px; }
-      .svc-card      { padding: 22px 18px; }
-      .svc-icon      { width: 48px; height: 48px; font-size: 22px; margin-bottom: 14px; }
-      .svc-card h3   { font-size: 16px; }
+      /* ─ services: compact tappable rows */
+      .services-head .sec-sub { display: none; }
+      .services-grid  { grid-template-columns: 1fr; gap: 10px; }
+      .svc-card {
+        display: flex;
+        align-items: center;
+        gap: 14px;
+        padding: 16px 18px;
+        border-radius: 14px;
+      }
+      .svc-card p,
+      .svc-tags,
+      .svc-cta    { display: none; }
+      .svc-icon   { width: 44px; height: 44px; font-size: 20px; margin: 0; flex-shrink: 0; border-radius: 11px; }
+      .svc-card h3 { font-size: 15px; margin: 0; flex: 1; }
+      .svc-card::after {
+        content: '→';
+        color: var(--teal);
+        font-size: 17px;
+        font-weight: 700;
+        flex-shrink: 0;
+      }
 
-      /* About */
-      .about-card      { padding: 28px 22px; }
-      .about-card-logo { width: 110px; height: 110px; }
-      .about-years-num { font-size: 62px; }
-      .about-aloha     { font-size: 28px; }
-      .about-body p    { font-size: 15px; }
+      /* ─ about */
+      .about-card-logo { display: none; } /* logo already in nav */
+      .about-card      { padding: 26px 20px; border-radius: 18px; }
+      .about-years-num { font-size: 58px; }
+      .about-trust-list li { font-size: 13px; padding: 10px 12px; }
+      .about-body p    { font-size: 14.5px; line-height: 1.75; }
+      .about-aloha     { font-size: 26px; }
+      .about-insured   { padding: 14px 16px; }
+      .about-insured p { font-size: 13.5px !important; }
 
-      /* Quote form */
-      .form-card-body  { padding: 20px 16px; }
-      .form-card-header{ padding: 18px 20px; }
-      .f-row           { grid-template-columns: 1fr; gap: 0; }
+      /* ─ quote form */
+      .form-card-header { padding: 18px 20px; gap: 10px; }
+      .form-card-header h3 { font-size: 16px; }
+      .form-card-body   { padding: 20px 16px; }
+      .f-row            { grid-template-columns: 1fr; gap: 0; }
       .f-group input,
-      .f-group select  { font-size: 16px; } /* prevent iOS zoom */
+      .f-group select   { font-size: 16px; padding: 12px 14px; } /* prevent iOS zoom-in */
+      .f-group label    { font-size: 11.5px; }
+      .btn-submit       { font-size: 15px; padding: 15px; }
+      .est-range        { font-size: 34px; }
 
-      /* Why */
-      .why-grid   { grid-template-columns: 1fr 1fr; gap: 12px; }
-      .why-card   { padding: 22px 14px; }
-      .why-icon-wrap { width: 54px; height: 54px; font-size: 26px; margin-bottom: 12px; }
-      .why-stat   { font-size: 30px; }
-      .why-name   { font-size: 14px; }
-      .why-desc   { font-size: 12px; }
+      /* ─ why */
+      .why-grid      { grid-template-columns: 1fr 1fr; gap: 10px; }
+      .why-card      { padding: 20px 12px; border-radius: 16px; }
+      .why-icon-wrap { width: 50px; height: 50px; font-size: 24px; margin-bottom: 12px; }
+      .why-stat      { font-size: 28px; }
+      .why-name      { font-size: 13px; }
+      .why-desc      { font-size: 11.5px; }
 
-      /* State banner */
-      .state-inner { flex-direction: column; gap: 18px; }
-      .state-seal  { width: 64px; height: 64px; font-size: 30px; }
+      /* ─ state banner */
+      .state-inner { flex-direction: column; gap: 16px; }
+      .state-seal  { width: 60px; height: 60px; font-size: 28px; }
+      .state-copy h2 { font-size: 18px; }
+      .state-copy p  { font-size: 13.5px; }
 
-      /* Section titles */
-      .sec-title { font-size: clamp(24px, 6vw, 36px); }
-
-      /* Footer */
-      footer { padding: 44px 16px 28px; }
-      .ft-links { gap: 18px; }
+      /* ─ footer */
+      footer          { padding: 40px 16px 24px; }
+      .ft-logo-wrap   { gap: 10px; }
+      .ft-logo        { width: 48px; height: 48px; border-radius: 10px; }
+      .ft-name        { font-size: 16px; }
+      .ft-links       { gap: 16px; font-size: 13px; }
+      .ft-copy        { font-size: 11.5px; }
     }
 
-    /* ── Small phones ── */
+    /* ── Small phones (iPhone SE etc.) ── */
     @media (max-width: 390px) {
-      .why-grid   { grid-template-columns: 1fr; }
-      .nav-cta    { padding: 9px 14px; font-size: 13px; }
-      .trust-pill { padding: 6px 11px; font-size: 11px; }
+      .why-grid      { grid-template-columns: 1fr; }
+      .hero-logo-img { width: 120px; height: 120px; }
+      .trust-pill    { font-size: 10.5px; padding: 5px 10px; }
     }
   </style>
 </head>
@@ -1593,6 +1626,7 @@
     var ns   = 'http://www.w3.org/2000/svg';
     var hero = document.querySelector('.hero');
     var wrap = document.createElement('div');
+    wrap.className = 'hero-paths';
     wrap.style.cssText = 'position:absolute;inset:0;pointer-events:none;overflow:hidden;z-index:1;';
 
     function buildD(i, pos) {
